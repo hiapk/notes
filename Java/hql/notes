@@ -1,0 +1,3 @@
+1.除了 Java 类与属性的名称外，查询语句对大小写并不敏感。 所以 SeLeCT 与 sELEct 以及 SELECT 是相同的，但是 org.hibernate.eg.FOO 并不等价于 org.hibernate.eg.Foo 并且 foo.barSet 也不等价于 foo.BARSET。
+2.通常我们不需要使用类的全限定名，因为 auto-import（自动引入）是缺省的情况。
+3.关键字 as 是可选的

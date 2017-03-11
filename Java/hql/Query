@@ -1,0 +1,15 @@
+String hql1 = "from com.ylsk.test.po.Blog";
+String hql2 = "select b.title from Blog b";
+String hql3 = "select new list(b.title,b.id) from Blog b";
+String hql4 = "select b.title,b.id from Blog b";
+String hql5 = "select new map(b.title,b.id)from Blog b";
+String hql6 = "from Blog b where b.id= ?";
+{
+String hql7 = "from Blog b where b.id= :id";
+KeyValue keyValue = new KeyValue("id", 1);
+List<Object> list = iBaseDAO.queryHQL(hql7, keyValue);//推荐有效防止SQL注入
+}
+String hql8 = "from Blog b where b.id between 2 and 3";// 如果是int的参数也可以
+String hql9 = "from Blog b where b.id in (2, 3)";
+String hql10 = "from Blog,User";
+String hql11 = "select new list(b, u)  from Blog b ,User u";
