@@ -1,0 +1,3 @@
+MyEclipse 逆向生成POJO的时候 ，Date对应成了TimeStamp
+1.手动改为Date 然后加入注解
+2.@Temporal(TemporalType.TIMESTAMP)

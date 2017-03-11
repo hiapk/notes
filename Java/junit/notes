@@ -1,0 +1,34 @@
+1.实测idea项目的Test 目录 的 ClassPath 包含Test和main的
+所以不用单独复制到Test目录一份
+2.添加如下注解
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "classpath:applicationContext.xml")
+
+如果有数据库则
+@Transactional
+@Rollback(value = false) 
+Oracle依旧有readonly的问题，待解决
+
+如果有Controller
+@WebAppConfiguration
+
+代码demo
+    @Autowired  
+    private WebApplicationContext wac;  
+  
+    private MockMvc mockMvc; 
+    
+    @Before
+    public void init(){
+    	this.mockMvc = webAppContextSetup(this.wac).build();  
+    }
+    @Test
+	public void testFindUserQuicks() throws Exception {
+		MockHttpServletRequestBuilder rb = get("/module/user/quicks/");
+		UserVo user = new UserVo();
+		user.setId("admin");//解决session
+		rb.sessionAttr(CONST.SESSION_KEY, user);
+		mockMvc.perform(rb).andExpect(status().isOk())  
+        .andDo(print()); 
+	}
+
