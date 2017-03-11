@@ -13,3 +13,6 @@ String hql8 = "from Blog b where b.id between 2 and 3";// 如果是int的参数�
 String hql9 = "from Blog b where b.id in (2, 3)";
 String hql10 = "from Blog,User";
 String hql11 = "select new list(b, u)  from Blog b ,User u";
+String hql12 = "from Blog b where b.content is null";
+String hql13 = "from Blog b where b.content like '%test%'";
+String hql14 = "from Blog  where content like '%test%'";
